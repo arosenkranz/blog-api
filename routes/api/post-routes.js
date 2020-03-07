@@ -3,9 +3,12 @@ const router = require('express').Router();
 // import models
 const { Post, User } = require('../../models');
 
+// import auth middleware
+const checkAuth = require('../../middleware/check-auth');
+
 // get all Posts with associated users
 // will eventually be `/api/posts`
-router.get('/', (req, res) => {
+router.get('/', checkAuth, (req, res) => {
   Post.findAll({
     include: [User]
   })
@@ -32,7 +35,7 @@ router.get('/:id', (req, res) => {
 });
 
 // create a new post
-router.post('/', (req, res) => {
+router.post('/', checkAuth, (req, res) => {
   /* 
   {
     title: "post title",
