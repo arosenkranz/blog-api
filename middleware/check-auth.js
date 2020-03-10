@@ -12,7 +12,7 @@ const checkAuth = (req, res, next) => {
     headers: {
       Authorization: 'Bearer <token>'
     }
-    */
+  */
   if (req.headers.authorization) {
     token = token
       .split(' ')
