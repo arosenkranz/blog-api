@@ -44,6 +44,9 @@ router.post('/', checkAuth, (req, res) => {
   }
   */
 
+  // set UserID
+  req.body.UserId = req.id;
+
   Post.create(req.body)
     .then(postdata => res.json(postdata))
     .catch(err => {
