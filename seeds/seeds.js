@@ -1,19 +1,19 @@
 const { User, Post } = require('../models');
 
-const userdata = [
-  {
-    name: 'Alex Rosenkranz',
-    email: 'arosenkranz@bootcampspot.com',
-    password: '12345'
-  },
-  {
-    name: 'Bodie Rosenkranz',
-    email: 'bodie@bodie.com',
-    password: 'bodieRulez'
-  }
-];
-
 const makeSeeds = async () => {
+  const userdata = [
+    {
+      name: 'Alex Rosenkranz',
+      email: 'arosenkranz@bootcampspot.com',
+      password: '12345'
+    },
+    {
+      name: 'Bodie Rosenkranz',
+      email: 'bodie@bodie.com',
+      password: 'bodieRulez'
+    }
+  ];
+
   await User.sync({ force: true });
 
   const dbUsers = await User.bulkCreate(userdata, { individualHooks: true });
