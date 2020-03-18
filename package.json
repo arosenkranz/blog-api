@@ -21,7 +21,8 @@
     "start": "node server.js",
     "watch": "nodemon server.js",
     "seed": "node ./seeds/seeds.js",
-    "test": "eslint .; exit 0 "
+    "test": "eslint .; exit 0 ",
+    "heroku-postbuild": "npm run seed"
   },
   "repository": {
     "type": "git",
