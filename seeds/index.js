@@ -1,2 +1,2 @@
 // execute running seeds
-require('./user-seeds');
+require('./seeds');
