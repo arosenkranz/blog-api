@@ -18,7 +18,7 @@ User.sync({ force: true }).then(() => {
     .then(res => {
       console.log('Users created!');
       console.log(res);
-      process.exit(1);
+      process.exit(0);
     })
     .catch(err => {
       throw new Error(err);
