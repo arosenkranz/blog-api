@@ -13,15 +13,28 @@ const uploadImage = (req, res, next) => {
   const form = formidable({ multiples: true });
   form.parse(req, (err, fields, files) => {
     if (err) {
-      next(err);
+      console.log(err);
+      res.status(400).json(err);
       return;
     }
+    console.log(files.image);
 
-    // cloudinary.uploader.upload(, (error, result) => {
-    //   console.log(result, error);
-    // });
+    console.log(fields);
 
-    res.json({ fields, files });
+    cloudinary.uploader.upload(files.image.path, (error, result) => {
+      console.log(result, error);
+      if (error) {
+        console.log(err);
+        res.status(500).json(err);
+        return;
+      }
+
+      req.body = { ...fields, image_url: result.secure_url };
+
+      console.log(result);
+
+      next();
+    });
   });
 };
 

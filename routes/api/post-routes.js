@@ -5,6 +5,7 @@ const { Post, User } = require('../../models');
 
 // import auth middleware
 const checkAuth = require('../../middleware/check-auth');
+const uploadImage = require('../../middleware/image-upload');
 
 // get all Posts with associated users
 // will eventually be `/api/posts`
@@ -35,7 +36,7 @@ router.get('/:id', (req, res) => {
 });
 
 // create a new post
-router.post('/', checkAuth, (req, res) => {
+router.post('/', checkAuth, uploadImage, (req, res) => {
   /* 
   {
     title: "post title",
