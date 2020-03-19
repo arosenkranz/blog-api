@@ -33,7 +33,7 @@ const makeSeeds = async () => {
 
   await Post.sync({ force: true });
   const dbPosts = await Post.bulkCreate(postdata);
-
+  console.log(dbPosts.get({ plain: true }));
   console.log('all done');
   process.exit(0);
 };
